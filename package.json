@@ -1,13 +1,14 @@
 {
-  "name": "node-js-getting-started",
+  "name": "stl-cmd-webapp",
   "version": "0.1.3",
-  "description": "A sample Node.js app using Express 4",
+  "description": "RESTful API for using stl_cmd",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "~4.9.x"
+    "express": "~4.9.x",
+    "child_process": "*"
   },
   "engines": {
     "node": "0.12.2"
@@ -21,5 +22,5 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "GNU"
 }
