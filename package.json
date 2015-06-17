@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "express": "~4.9.x",
-    "child_process": "*"
   },
   "engines": {
     "node": "0.12.2"
