@@ -1,16 +1,14 @@
-# node-js-getting-started
+# stl-cmd-webapp
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
-
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+A heroku webapp that provides a RESTful API for [stl_cmd](https://github.com/frknsweetapps/stl-cmd).
 
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
+$ git clone git@github.com:frknsweetapps/stl-cmd-webapp.git # or clone your own fork
+$ cd stl-cmd-webapp.git
 $ npm install
 $ npm start
 ```
