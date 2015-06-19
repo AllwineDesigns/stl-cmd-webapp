@@ -17,37 +17,50 @@ app.get('/stl_threads', function(request, response) {
     var s = request.query.s ? request.query.s : "72";
     var o = request.query.o ? request.query.o : "12";
 
+    var filename = request.query.filename ? request.query.filename : "M" + D + "x" + P;
+
     var args = ["-D", D, "-P", P, "-h", h, "-a", a, "-s", s, "-o", o];
     if(request.query.f) {
         args.push("-f");
+        filename = "female" + filename;
+    } else {
+        filename = "male" + filename;
     }
     args.push(file);
 
     var stl_threads = spawn("stl_threads", args);
     stl_threads.on('close', function(code) {
-        response.download(file, 'stl_threads.stl');
+        response.download(file, filename+'.stl');
     });
 });
 
 app.get('/stl_threads_english', function(request, response) {
     var file = "/tmp/" + uuid.v4() + ".stl";
 
-    var D = request.query.D ? parseFloat(request.query.D)*25.4 : "6.35";
-    var P = request.query.tpi ? 25.4/parseFloat(request.query.tpi) : "1.27";
+    var Din = request.query.D ? request.query.D : ".25";
+    var TPI = request.query.tpi ? request.query.tpi : "20";
+
+    var D = parseFloat(request.query.Din)*25.4;
+    var P = 25.4/parseFloat(TPI);
     var h = request.query.h ? parseFloat(request.query.h)*25.4 : "25.4";
     var a = request.query.a ? request.query.a : "60";
     var s = request.query.s ? request.query.s : "72";
     var o = request.query.o ? parseFloat(request.query.o)*25.4 : "12";
 
+    var filename = request.query.filename ? request.query.filename : Din + "x" + TPI;
+
     var args = ["-D", D, "-P", P, "-h", h, "-a", a, "-s", s, "-o", o];
     if(request.query.f) {
         args.push("-f");
+        filename = "female" + filename;
+    } else {
+        filename = "male" + filename;
     }
     args.push(file);
 
     var stl_threads = spawn("stl_threads", args);
     stl_threads.on('close', function(code) {
-        response.download(file, 'stl_threads.stl');
+        response.download(file, filename+'.stl');
     });
 });
 
