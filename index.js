@@ -16,15 +16,13 @@ app.get('/stl_threads', function(request, response) {
     var a = request.query.a ? request.query.a : "60";
     var s = request.query.s ? request.query.s : "72";
     var o = request.query.o ? request.query.o : "12";
+    var f = request.query.f;
 
-    var filename = request.query.filename ? request.query.filename : "M" + D + "x" + P;
+    var filename = request.query.filename ? request.query.filename : (f ? "female" : "male") + "M" + D + "x" + P;
 
     var args = ["-D", D, "-P", P, "-h", h, "-a", a, "-s", s, "-o", o];
-    if(request.query.f) {
+    if(f) {
         args.push("-f");
-        filename = "female" + filename;
-    } else {
-        filename = "male" + filename;
     }
     args.push(file);
 
@@ -47,14 +45,11 @@ app.get('/stl_threads_english', function(request, response) {
     var s = request.query.s ? request.query.s : "72";
     var o = request.query.o ? parseFloat(request.query.o)*25.4 : "12";
 
-    var filename = request.query.filename ? request.query.filename : Din + "x" + TPI;
+    var filename = request.query.filename ? request.query.filename : (f ? "female" : "male") + Din + "x" + TPI;
 
     var args = ["-D", D, "-P", P, "-h", h, "-a", a, "-s", s, "-o", o];
     if(request.query.f) {
         args.push("-f");
-        filename = "female" + filename;
-    } else {
-        filename = "male" + filename;
     }
     args.push(file);
 
