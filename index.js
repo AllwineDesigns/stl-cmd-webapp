@@ -44,11 +44,12 @@ app.get('/stl_threads_english', function(request, response) {
     var a = request.query.a ? request.query.a : "60";
     var s = request.query.s ? request.query.s : "72";
     var o = request.query.o ? parseFloat(request.query.o)*25.4 : "12";
+    var f = request.query.f;
 
     var filename = request.query.filename ? request.query.filename : (f ? "female" : "male") + Din + "x" + TPI;
 
     var args = ["-D", D, "-P", P, "-h", h, "-a", a, "-s", s, "-o", o];
-    if(request.query.f) {
+    if(f) {
         args.push("-f");
     }
     args.push(file);
